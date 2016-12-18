@@ -141,7 +141,7 @@ function GetTools() {
 		$webclient.DownloadFile($terraformUrl, $zipFile)
 		Expand-Archive $zipFile $toolDir
 		Remove-Item $zipFile
-		New-Alias tf $(resolve-path $terraformExePath)
+		New-Alias tf (resolve-path $terraformExePath)
 	}
 }
 
@@ -149,7 +149,7 @@ function ShowConfigs() {
 	$azureConnectionfileName = "azure-connection.tf"
 	$config = 
 @" 
-{
+provider "azurerm" {
 	"client_id": "$azure_client_id",
 	"client_secret": "$azure_client_secret",
 	"subscription_id": "$azure_subscription_id",
@@ -169,13 +169,13 @@ function Setup() {
 	
 	if($reqs -gt 0)
 	{
-		#AskSubscription
-		#AskName
-		#AskSecret
+		AskSubscription
+		AskName
+		AskSecret
 
-		#CreateServicePrinciple
+		CreateServicePrinciple
 
-		#ShowConfigs
+		ShowConfigs
 		GetTools
 	}
 }
