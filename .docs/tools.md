@@ -91,11 +91,11 @@ for maximum resilience. As Consul is the configuration backing store for most se
 however unlikely.
 
 Nomad also ensures that infrastructure services running in containers are distributed across multiple hosts and/or cloud providers.
-It can keep services on hot-backup to handle container crashes, unresponsiveness or redeployment as infrastructures are added or removed.
+It can keep services on hot-backup to handle container crashes, unresponsiveness or redeployment as infrastructure Servers are added or removed.
 
 ### for applications
 
-Nomad deploy containerised ServiceStack applications with fault-tolerance and elastic-scaling
+Nomad manages the running of containerised ServiceStack applications with fault-tolerance and elastic-scaling
 
 ## Vault
 
@@ -141,9 +141,9 @@ n/a
 ### for applications
 
 Our ServiceStack.RateLimit.Redis plugin provides runtime-configurable, automatic and transparent rate-limiting for all ServiceStack endpoints.
-By default we also use it for service 
+By default we also use it for ServiceStack caching across all services.
 
-## Identify Server
+## Identity Server
 
 Identity Server is an open source OpenID Connect and OAuth 2.0 framework for .NET
 
