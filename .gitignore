@@ -2,3 +2,4 @@ terraform.tfstate
 terraform.tfstate.backup
 azure-connection.tf
 *.exe
+.vscode
