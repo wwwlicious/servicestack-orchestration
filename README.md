@@ -17,11 +17,10 @@ For more background and context on these tools, please see [Tools](.docs/tools.m
 
 Distributed services infrastructure is not simple, it's operational complexity made real.
 
-It is almost never discussed in specifics (oh the glue-stuff is complex ... but but microservices).
+It is almost never discussed in specifics (oh the glue-stuff is complex ... but ... but microservices).
 The glue stuff though is what really matters when building scalable and distributed services, as without it...well good luck!
 
-The aim of this project is simplify the complex process of setting up a secure, well-configured, scalable, manageable multi-cloud infrastructure 
-where fault-tolerant distributed or shared concerns are available to use in ServiceStack via the plugin model relatively painlessly.
+The aim of this project is simplify the complex process of setting up a secure, well-configured, scalable, manageable multi-cloud infrastructure where fault-tolerant distributed or shared concerns are available to use in ServiceStack via the plugin model relatively painlessly.
 
 The concerns that are handled cover the following areas:
 
@@ -38,18 +37,18 @@ The concerns that are handled cover the following areas:
 
 NOTE: The initial version will focus only on Azure, but will support adding alternative cloud-providers for a multi-cloud infrastructure.
 
-## What it isn't...
+## What it isn't
 
 A hello-world demo app.
 
 This repo will bootstrap and manage an enterprise-level, securely configured, fault-tolerant, highly available, distributed set of infrastructure services
 and container hosts for you to deploy ServiceStack instances into.
 
-## What it does?
+## What it does
 
 In simple terms, it does one or more of the following, depending on how you configure it:
 
-* sets up a cloud connections for terraform 
+* sets up a cloud connections for terraform
 * sets up infrastructure servers in the cloud
 * One or more datacenter server clusters to
   * configure the servers with a consul cluster for service discovery and distributed configuration
@@ -61,7 +60,7 @@ In simple terms, it does one or more of the following, depending on how you conf
   * configure elastic-scaling server instances to deploy and run your container-based (ServiceStack) apps into
   * configure backups for the infrastructure services configuration and data, to one or more cloud-storage providers
 
-To fully cover why and how all these things are used is beyond the scope of this readme. For more information on this, please 
+To fully cover why and how all these things are used is beyond the scope of this readme. For more information on this, please
 view my series of blog posts on ServiceStack @ [http://wwwlicious.com](http://wwwlicious.com)
 
 ## Prerequisites
@@ -78,7 +77,7 @@ view my series of blog posts on ServiceStack @ [http://wwwlicious.com](http://ww
 
 clone the repo
 
-```
+```bash
 cd <EnterWorkingDirHere>
 git clone https://github.com/wwwlicious/servicestack-orchestration.git
 ```
@@ -94,16 +93,16 @@ lets get started shall we.
 
 first, launch powershell in the repo cloned directory.
 
-```
+```bash
 powershell
 ```
 
-#### requirements 
+#### requirements
 
 Skip this step if you already have the azurerm powershell module installed.
 
-```
-.\azure-setup.ps1 requirements 
+```powershell
+.\azure-setup.ps1 requirements
 ```
 
 #### setup
@@ -116,7 +115,7 @@ You will be asked to:
 * (optional) override the default name (terraform) for an Azure AD App Registration service principal. This the principal which will allow terraform to manage the resources in it's configuration.
 * (optional) override the default .net generated client secret
 
-```
+```powershell
 .\azure-setup.ps1 setup
 ```
 
@@ -125,7 +124,7 @@ If you run both these commands and follow the directions, you should now have:
 * the terraform executable in a `.tools` directory.
 * a valid `azure-connection.tf` to azure that terraform will use to create azure resources.
 
-Next up we will cover the default config and how to customise it
+Next up we will cover the default configuration and how to customise it
 before we go ahead and create our cloud-resources (the things that cost you money)
 
 ## Default config
@@ -138,16 +137,3 @@ The file contains documentation in the comments. By default, most of the setup i
 accidentally spinning up cloud resources.
 
 [WIP]
-
-
-## Bootstrapper
-
-Now, we will cover in more detail the steps the bootstrapper performs along with some background information and the configuration points.
-It all starts with the `azure-setup.ps1` script
-
-### Setup
-
-The `azure-setup.ps1` script container two options:
-
-1. `azure-setup.ps1 requirements` - This will check that you have the requisite powershell module for managing azure remotely.
-2. `azure-setup.ps1 setup` - This will guide you through creating the terraform azure connection and download the terraform windows binary
