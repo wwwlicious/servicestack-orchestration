@@ -1,0 +1,2 @@
+
+# add nomad variables
